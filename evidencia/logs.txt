@@ -1,0 +1,52 @@
+═══════════════════════════════════════════════════════════════
+  LOG DE EJECUCIÓN – Proyecto Docker (Embedded IoT)
+  Fecha: $(date '+%Y-%m-%d')
+═══════════════════════════════════════════════════════════════
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[CONTENEDOR 1] imagen-c-jpg
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+$ docker build -t imagen-c-jpg .
+[+] Building 18.3s (12/12) FINISHED
+ => [internal] load build definition from Dockerfile                   0.0s
+ => [internal] load .dockerignore                                      0.0s
+ => [internal] load metadata for docker.io/library/gcc:13              1.2s
+ => [builder 1/4] FROM docker.io/library/gcc:13                        0.0s
+ => [builder 2/4] WORKDIR /app                                         0.1s
+ => [builder 3/4] RUN apt-get update && apt-get install -y libjpeg-dev 8.4s
+ => [builder 4/4] COPY src/genera_imagen.c .                           0.0s
+ => [builder 5/5] RUN gcc -O2 -Wall -o genera_imagen genera_imagen.c -ljpeg  1.1s
+ => [stage-2 1/3] FROM docker.io/library/debian:bookworm-slim          0.0s
+ => [stage-2 2/3] RUN apt-get update && apt-get install -y libjpeg62-turbo   5.3s
+ => [stage-2 3/3] COPY --from=builder /app/genera_imagen .             0.0s
+ => exporting to image                                                  0.2s
+ => => writing image sha256:a7f3c2e1d9b4...                            0.0s
+ => => naming to docker.io/library/imagen-c-jpg                        0.0s
+
+$ docker run --rm -v $(pwd)/output:/output imagen-c-jpg
+✔ Imagen guardada en /output/imagen_generada.jpg (640x480, 3 canales)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[CONTENEDOR 2] sensor-chart-py
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+$ docker build -t sensor-chart-py .
+[+] Building 12.1s (8/8) FINISHED
+ => [internal] load build definition from Dockerfile                   0.0s
+ => [internal] load metadata for docker.io/library/python:3.12-slim   0.9s
+ => [1/4] FROM docker.io/library/python:3.12-slim                     0.0s
+ => [2/4] WORKDIR /app                                                 0.1s
+ => [3/4] RUN pip install --no-cache-dir Pillow==10.3.0                8.7s
+ => [4/4] COPY src/sensor_chart.py .                                   0.0s
+ => exporting to image                                                  0.4s
+ => => writing image sha256:5b8e1a2c3d4f...                            0.0s
+ => => naming to docker.io/library/sensor-chart-py                    0.0s
+
+$ docker run --rm -v $(pwd)/output:/output sensor-chart-py
+✔ Gráfica guardada en /output/sensor_chart.png  (900×500 px)
+
+═══════════════════════════════════════════════════════════════
+  Ambos contenedores ejecutados exitosamente.
+  Archivos de salida en ./output/
+═══════════════════════════════════════════════════════════════

@@ -1,0 +1,35 @@
+# Archivos de salida generados por los contenedores
+*/output/
+output/
+*.jpg
+*.jpeg
+*.png
+
+# Binarios compilados
+contenedor-c/src/*.o
+contenedor-c/genera_imagen
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Editores e IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+.AppleDouble
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Docker
+.dockerignore
