@@ -192,6 +192,9 @@ Las imágenes generadas y los logs se encuentran en la carpeta [`evidencia/`](./
 | `logs.txt` | Salida de consola de ambos contenedores |
 | `docker-desktop.png` | Imagenes creadas de ambos programas |
 
+## Imágenes creadas para ambos programas en Docker Desktop
+<img width="1579" height="894" alt="image" src="https://github.com/user-attachments/assets/2e92edb7-0ceb-4806-b92d-4dae628e263a" />
+
 ## Imágen creada C
 <img width="1138" height="49" alt="image" src="https://github.com/user-attachments/assets/31cedf2f-1d02-4e11-9ab8-fd9b70a12b9c" />
 
