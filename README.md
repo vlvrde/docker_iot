@@ -2,9 +2,9 @@
 
 > **Materia:** Internet de las Cosas|Embedded Systems
 > 
-> **Alumno** Gustavo Valverde Rojas
+> **Alumno:** Gustavo Valverde Rojas
 > 
-> **Grupo** 6CM3
+> **Grupo:** 6CM3
 > 
 > **Descripción:** Contenedores Docker para generación de imágenes: uno con C + libjpeg y otro con Python + Pillow.
 
