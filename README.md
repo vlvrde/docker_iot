@@ -1,6 +1,6 @@
 # 🐳 Proyecto Docker – Embedded IoT
 
-> **Materia:** Embedded Systems & IoT  
+> **Materia:** INTERNET DE LAS COSAS|EMBEDDED SYSTEMS  
 > **Descripción:** Contenedores Docker para generación de imágenes: uno con C + libjpeg y otro con Python + Pillow.
 
 ---
